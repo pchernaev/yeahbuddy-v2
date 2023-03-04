@@ -1,0 +1,98 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Symbols+2&display=swap");
+
+body {
+  background-color: #f7e3f7;
+}
+.react-datepicker__input-container {
+  margin-top: 10px;
+}
+
+.react-datepicker__input-container input {
+  background-color: transparent;
+  border: transparent;
+  text-align: center;
+  font-size: large;
+  font-family: "Noto Sans Symbols 2", sans-serif;
+}
+
+.react-datepicker__input-container input:hover {
+  cursor: pointer;
+}
+
+#meals-info h3 {
+  margin: 10px;
+}
+
+#meals-info h5 {
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+#meals-info section {
+  background-color: white;
+  margin: 10px;
+  border: 3px solid black;
+  border-radius: 0px 10px 0px 10px;
+}
+
+#meals-info #macros-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.group-container {
+  background-color: white;
+  margin: 10px;
+  margin-top: 15px;
+  border: 3px solid black;
+  border-radius: 10px;
+}
+
+.group-container h3 {
+  margin: 10px;
+}
+
+.group-container .group-info-container {
+  display: flex;
+  gap: 40%;
+}
+
+.group-container .meal-container {
+  border-top: 3px solid black;
+}
+
+.group-container .meal {
+  display: flex;
+  gap: 40%;
+}
+
+.group-container p {
+  margin: 0;
+  padding: 7px 13px;
+  font-weight: 500;
+}
+
+.group-container .meal-container button {
+  border: none;
+  background-color: black;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 3px;
+  width: 30%;
+  height: 25px;
+  margin: 10px;
+}
+
+.group-container .meal-container button:hover {
+  background-color: white;
+  cursor: pointer;
+  color: black;
+  border: 2px solid black;
+}
+
+.group-container .meal-container div:last-child {
+  text-align: left;
+}
