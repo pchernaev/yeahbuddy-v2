@@ -56,7 +56,7 @@ body {
 
 .group-container .group-info-container {
   display: flex;
-  gap: 40%;
+  justify-content: space-between;
 }
 
 .group-container .meal-container {
@@ -65,7 +65,7 @@ body {
 
 .group-container .meal {
   display: flex;
-  gap: 40%;
+  justify-content: space-between;
 }
 
 .group-container p {
