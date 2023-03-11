@@ -9,10 +9,10 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      {/* <HomePage /> */}
+      <HomePage />
       {/* <MealsPage /> */}
       {/* <AddMeal /> */}
-      <ProfilePage />
+      {/* <ProfilePage /> */}
     </div>
   );
 }
