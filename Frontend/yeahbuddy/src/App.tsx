@@ -1,3 +1,4 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AddMeal } from "./AddMeal/AddMeal";
 import "./App.css";
 import { HomePage } from "./HomePage/HomePage";
@@ -9,10 +10,15 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      <HomePage />
-      {/* <MealsPage /> */}
-      {/* <AddMeal /> */}
-      {/* <ProfilePage /> */}
+      <BrowserRouter>
+        <Routes>
+          <Route index element={<HomePage />} />
+          <Route path="/home" element={<HomePage />} />
+          <Route path="/meals" element={<MealsPage />} />
+          <Route path="/add-meal" element={<AddMeal />} />
+          <Route path="/profile" element={<ProfilePage />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

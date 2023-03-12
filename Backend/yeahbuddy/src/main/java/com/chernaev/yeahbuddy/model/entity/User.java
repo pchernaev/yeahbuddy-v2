@@ -1,16 +1,17 @@
 package com.chernaev.yeahbuddy.model.entity;
 
 
-import com.chernaev.yeahbuddy.model.entity.enums.ActivityEnum;
-import com.chernaev.yeahbuddy.model.entity.enums.GenderEnum;
-import com.chernaev.yeahbuddy.model.entity.enums.GoalEnum;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -18,27 +19,22 @@ import java.util.List;
 @NoArgsConstructor
 @Table(name = "users")
 public class User extends BaseEntity {
-    @Column
-    private String email;
-    @Column(name = "first_name", nullable = false)
-    private String firstName;
-    @Column(name = "last_name", nullable = false)
-    private String lastName;
-    @Column
-    private int age;
-    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private GenderEnum gender;
-    @Column
-    private int height;
-    @Column
-    private int weight;
-    @Column
-    @Enumerated(EnumType.STRING)
-    private ActivityEnum activity;
-    @Column
-    @Enumerated(EnumType.STRING)
-    private GoalEnum goal;
+    private String username;
+
+    @Size(max = 50)
+    @Email
+    @Column(nullable = false)
+    private String email;
+
+    @Size(max = 120)
+    @Column(nullable = false)
+    private String password;
+
+
     @OneToMany(targetEntity = Meal.class, mappedBy = "user")
     private List<Meal> meals = new ArrayList<>();
+
+    @OneToOne(mappedBy = "user")
+    private UserInfo userInfo;
 }
