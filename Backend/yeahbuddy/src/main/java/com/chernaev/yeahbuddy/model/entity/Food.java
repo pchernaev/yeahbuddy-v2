@@ -1,6 +1,7 @@
 package com.chernaev.yeahbuddy.model.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,6 +13,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "foods")
 public class Food extends BaseEntity{
     @Column(nullable = false)

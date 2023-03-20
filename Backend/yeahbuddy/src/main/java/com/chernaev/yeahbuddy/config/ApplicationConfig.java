@@ -1,6 +1,6 @@
 package com.chernaev.yeahbuddy.config;
 
-import com.chernaev.yeahbuddy.repository.UserRepository;
+import com.chernaev.yeahbuddy.model.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

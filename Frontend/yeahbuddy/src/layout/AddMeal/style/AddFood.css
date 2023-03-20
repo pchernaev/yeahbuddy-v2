@@ -1,0 +1,124 @@
+body {
+  background-color: #f7e3f7;
+}
+
+.food-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
+  border: 2px solid black;
+  border-radius: 10px;
+  background-color: white;
+  text-align: left;
+}
+
+.food-container h4,
+h5 {
+  margin: 5px;
+}
+
+.food-container button {
+  width: 35px;
+  height: 35px;
+  font-size: 25px;
+  color: white;
+  background-color: black;
+  border: 2px solid black;
+  border-radius: 5px;
+}
+
+.food-container button:hover {
+  color: black;
+  background-color: white;
+}
+.food-container div:last-child {
+  padding: 10px;
+}
+
+#search-container {
+  display: flex;
+  margin: 20px 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+#search-container input {
+  width: 16rem;
+  margin-right: 10px;
+  height: 25px;
+  border: 1px solid black;
+  border-radius: 3px;
+  text-indent: 5px;
+}
+
+#search-container button {
+  width: 30px;
+  height: 30px;
+  color: black;
+  background-color: white;
+  font-size: 25px;
+  border: 2px solid black;
+  border-radius: 5px;
+}
+
+.popup-content {
+  width: 80% !important;
+  height: auto;
+  border-radius: 10px;
+  border: 4px solid black !important;
+  background-color: #faf6e9 !important;
+}
+
+.popup-content .name-container {
+  text-align: center;
+}
+
+.popup-content .food-info-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 15px;
+  font-weight: 700;
+}
+
+.popup-content .input-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.popup-content .input-container label {
+  font-weight: 500;
+}
+
+.popup-content .input-container input {
+  margin: 0px 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+  width: 50px;
+  height: 20px;
+  text-indent: 10px; 
+}
+
+.popup-content .btn-container {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.popup-content .btn-container button {
+  border: none;
+  background-color: black;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 3px;
+  width: 40%;
+  height: 25px;
+  margin: 10px;
+}
+
+.popup-content .btn-container button:hover {
+  background-color: white;
+  cursor: pointer;
+  color: black;
+  border: 2px solid black;
+}
+

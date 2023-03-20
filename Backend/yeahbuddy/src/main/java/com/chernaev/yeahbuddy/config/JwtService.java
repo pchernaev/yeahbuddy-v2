@@ -1,5 +1,6 @@
 package com.chernaev.yeahbuddy.config;
 
+import com.chernaev.yeahbuddy.model.entity.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -28,20 +29,22 @@ public class JwtService {
         return claimsResolver.apply(claims);
     }
 
-    public  String generateToken(UserDetails userDetails) {
+    public  String generateToken(User userDetails) {
         return generateToken(new HashMap<>(), userDetails);
     }
 
     public  String generateToken(
             Map<String, Object> extraClaims,
-            UserDetails userDetails
+            User user
     ) {
         return Jwts
                 .builder()
                 .setClaims(extraClaims)
-                .setSubject(userDetails.getUsername())
+                .setSubject(user.getUsername())
+                .claim("firstName", user.getFirstName())
+                .claim("lastName", user.getLastName())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 24))
+                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 24))
                 .signWith(SignatureAlgorithm.HS256, getSignInKey())
                 .compact();
     }

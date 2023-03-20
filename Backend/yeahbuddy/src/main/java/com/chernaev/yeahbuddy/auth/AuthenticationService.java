@@ -3,7 +3,7 @@ package com.chernaev.yeahbuddy.auth;
 import com.chernaev.yeahbuddy.config.JwtService;
 import com.chernaev.yeahbuddy.model.entity.User;
 import com.chernaev.yeahbuddy.model.entity.enums.RoleEnum;
-import com.chernaev.yeahbuddy.repository.UserRepository;
+import com.chernaev.yeahbuddy.model.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
