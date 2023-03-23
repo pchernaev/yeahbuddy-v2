@@ -18,7 +18,7 @@ export const Food: React.FC<{meal: MealsToAdd}> = (props) => {
     setSize(e.target.value);
   }
 
-  function handleSubmit(e: any) {
+  async function handleSubmit(e: any) {
     e.preventDefault();
     const meal = {
       size: size,
@@ -28,7 +28,10 @@ export const Food: React.FC<{meal: MealsToAdd}> = (props) => {
       user_email: user.email
     } 
 
-    axios.post("http://localhost:8080/api/v1/meal",meal);
+    await axios.post("http://localhost:8080/api/v1/meal",meal)
+    .then((response) => {
+      console.log(response);
+    });
     
     history.push("/meals");
   }

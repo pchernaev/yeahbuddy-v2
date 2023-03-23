@@ -6,7 +6,7 @@ import "./style/MealsPage.css";
 
 export const MealsPage = () => {
   return (
-    <div>
+    <div id="meals-page-container">
       <MealsInfo />
       <MealGroup group={"Breakfast"} id={1} />
       <MealGroup group={"Lunch"} id={2} />

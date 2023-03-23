@@ -72,7 +72,8 @@ export const AddMeal = () => {
 
   useEffect(() => {
     const fetchMeals = async () => {
-      axios.get("http://localhost:8080/api/v1/meal").then(function (response) {
+      axios.get("http://localhost:8080/api/v1/meal")
+      .then(function (response) {
         const responseData = response.data;
         const loadedMeals: MealsToAdd[] = [];
         console.log("Hi");
@@ -109,7 +110,7 @@ export const AddMeal = () => {
   }
 
   return (
-    <div>
+    <div id="add-meal-container">
       <div id="search-container">
         <div>
           <input type="text" placeholder="Search for food" />

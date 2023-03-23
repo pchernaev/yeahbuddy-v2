@@ -2,27 +2,37 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
 
 
-body {
+#login-container {
     background-color: #f7e3f7;
+    height: 100%;
 }
 
-#login-container h1 {
-    margin: 40px 20px 80px 20px;
+.login{
+    position: absolute;
+    top:40%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    width: 100%;
+}
+
+.login h1 {
+    margin: 0;
+    padding: 40px 30px;
     font-family: 'Kanit', sans-serif;
 }
 
-#login-container label {
+.login label {
     display: block;
     font-weight: bolder;
     margin-bottom: 5px;
     font-size: large;
 }
 
-#login-container div {
+.login div {
     margin-bottom: 30px;
 }
 
-#login-container input {
+.login input {
     width: 70%;
     height: 25px;
     text-indent: 30px; 
@@ -31,17 +41,13 @@ body {
     background-color: white;
 }
 
-#login-container i {
+.login i {
     position: relative;
     left: 25px;
     top: 2px;
 }
 
-#login-container #button-container {
-    margin-top: 9rem;
-}
-
-#login-container button {
+.login button {
   width: 5rem;
   height: 35px;
   font-size: 20px;
@@ -53,13 +59,14 @@ body {
   font-family: 'Josefin Sans', sans-serif;
 }
 
-#login-container button:hover {
+.login button:hover {
   color: black;
   background-color: white;
 }
 
-#login-container p {
+.login p {
     font-weight: 400;
+    margin-bottom:3rem;
 }
 
 #sign-up-link {

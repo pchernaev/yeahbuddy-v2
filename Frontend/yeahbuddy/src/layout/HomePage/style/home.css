@@ -1,5 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Titan+One&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans&display=swap');
 
+#home-container {
+  background-color: #fef6fe;
+}
+
+#home-container p{
+ text-align: justify;
+ text-justify: inter-word;
+ padding: 0px 15px;
+ font-family: 'PT Sans', sans-serif;
+}
 
 #container {
   background-color: #f7e3f7;

@@ -24,14 +24,14 @@ export const MealGroup: React.FC<{ group: string; id: number }> = (props) => {
         );
       }
 
-      console.log(mealsInfo.date);
 
       const date: string = mealsInfo.date.toISOString().split("T")[0];
       const url: string = `http://localhost:8080/api/v1/meal/group=${props.id}/email=${user.email}/date=${date}`;
 
       axios.get(url).then(function (response) {
         const responseData = response.data;
-
+        console.log(props.group);
+        console.log(responseData);
         const loadedMeals: MealsToDisplay[] = [];
 
         for (const key in responseData.meals) {

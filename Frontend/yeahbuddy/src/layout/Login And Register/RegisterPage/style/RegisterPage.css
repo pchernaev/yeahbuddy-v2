@@ -1,12 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Kanit:wght@500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap");
 
-body {
+
+
+#register-container {
   background-color: #f7e3f7;
+  height: 100%;
 }
 
 #register-container h1 {
-  margin: 40px 20px 50px 20px;
+  padding: 40px 20px 50px 20px;
+  margin: 0;
   font-family: "Kanit", sans-serif;
 }
 

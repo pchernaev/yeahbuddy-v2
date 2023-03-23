@@ -1,6 +1,12 @@
-body {
+/* body {
   background-color: #f7e3f7;
+} */
+
+#add-meal-container {
+  background-color: #f7e3f7;
+  height: 100%;
 }
+
 
 .food-container {
   display: flex;
@@ -10,6 +16,7 @@ body {
   border-radius: 10px;
   background-color: white;
   text-align: left;
+  
 }
 
 .food-container h4,
@@ -37,9 +44,10 @@ h5 {
 
 #search-container {
   display: flex;
-  margin: 20px 10px;
+  padding: 20px 10px;
   align-items: center;
   justify-content: center;
+  
 }
 
 #search-container input {

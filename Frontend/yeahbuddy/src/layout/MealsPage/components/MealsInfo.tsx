@@ -69,7 +69,7 @@ export const MealsInfo = () => {
           />
         </div>
         <div>
-          <h3>{totalDailyCalories} / 3000 cal</h3>
+          <h3>{totalDailyCalories} / 3036 cal</h3>
           <div id="macros-container">
             <h5>Protein: {totalDailyProtein} g.</h5>
             <h5>Carbs: {totalDailyCarbs} g.</h5>

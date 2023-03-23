@@ -4,5 +4,5 @@ public enum GroupEnum {
     BREAKFAST,
     LUNCH,
     DINNER,
-    SNACKS
+    SNACK
 }
