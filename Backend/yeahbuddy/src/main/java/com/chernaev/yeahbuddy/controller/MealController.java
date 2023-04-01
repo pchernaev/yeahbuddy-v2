@@ -41,9 +41,9 @@ public class MealController {
     }
 
     @CrossOrigin
-    @GetMapping
-    public ResponseEntity<List<Food>> getAllMeals () {
-        return ResponseEntity.ok(mealService.getAllMeals());
+    @GetMapping("/search={search}")
+    public ResponseEntity<List<Food>> getAllMeals (@PathVariable String search) {
+        return ResponseEntity.ok(mealService.getAllMeals(search));
     }
 
     @CrossOrigin

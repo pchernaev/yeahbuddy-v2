@@ -4,10 +4,21 @@ import "./style/home.css";
 import jwt_decode from "jwt-decode";
 import { UserContext } from "../../context/UserContext";
 import { useHistory } from "react-router-dom";
+import axios from "axios";
 
 export const HomePage = () => {
   const user = useContext(UserContext);
   const history = useHistory();
+
+  if (user.email != null) {
+    const url: string = `http://localhost:8080/api/v1/user/email=${user.email}`;
+    axios.get(url).then(function (response) {
+      const responseData = response.data;
+      if (responseData.activity == null) {
+        history.push("/user-info");
+      }
+    });
+  }
 
   return (
     <div id="home-container">

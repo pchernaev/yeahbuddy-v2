@@ -17,6 +17,7 @@ export const MealsInfo = () => {
   const [totalDailyCarbs, setTotalDailyCarbs] = useState(0);
   const [totalDailyFats, setTotalDailyFats] = useState(0);
   const [totalDailyProtein, setTotalDailyProtein] = useState(0);
+  const [dailyGoal, setDailyGoal] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [httpError, setHttpError] = useState(null);
 
@@ -25,14 +26,14 @@ export const MealsInfo = () => {
       const date = mealInfo.date.toISOString().split("T")[0];
       
       const url: string = `http://localhost:8080/api/v1/meal/email=${user.email}/date=${date}`;
-      console.log(url)
+
       axios.get(url).then(function (response) {
         const responseData = response.data;
-
         setTotalDailyCalories(responseData.totalDailyCalories);
         setTotalDailyCarbs(responseData.totalCarbs);
         setTotalDailyFats(responseData.totalFats);
         setTotalDailyProtein(responseData.totalProtein);
+        setDailyGoal(responseData.dailyGoal);
 
         setIsLoading(false);
       });
@@ -62,14 +63,13 @@ export const MealsInfo = () => {
           <DatePicker
             selected={mealInfo.date}
             onChange={(date: any) => {
-              // setSelectedDate(date);
               mealInfo.setDate(date);
             }}
             withPortal
           />
         </div>
         <div>
-          <h3>{totalDailyCalories} / 3036 cal</h3>
+          <h3>{totalDailyCalories} / {dailyGoal} cal</h3>
           <div id="macros-container">
             <h5>Protein: {totalDailyProtein} g.</h5>
             <h5>Carbs: {totalDailyCarbs} g.</h5>

@@ -16,10 +16,11 @@ export const ProfilePage = () => {
     weight: "",
     height: "",
     goal: "",
-    activity: ""
+    activity: "",
   });
   const [isLoading, setIsLoading] = useState(true);
   const [httpError, setHttpError] = useState(null);
+  const [haveChanges, setHaveChanges] = useState(false);
 
   const user = useContext(UserContext);
 
@@ -38,6 +39,56 @@ export const ProfilePage = () => {
     });
   }, []);
 
+  function changeAge(e: any) {
+    setUserData(() => {
+      const user = userData;
+      user.age = e.target.value;
+      return user;
+    });
+    setHaveChanges(true);
+  }
+
+  function changeHeight(e: any) {
+    setUserData(() => {
+      const user = userData;
+      user.height = e.target.value;
+      return user;
+    });
+    setHaveChanges(true);
+  }
+
+  function changeWeight(e: any) {
+    setUserData(() => {
+      const user = userData;
+      user.weight = e.target.value;
+      return user;
+    });
+    setHaveChanges(true);
+  }
+
+  function changeActivity(e: any) {
+    setUserData(() => {
+      const user = userData;
+      user.activity = e.target.value;
+      return user;
+    });
+    setHaveChanges(true);
+  }
+
+  function changeGoal(e: any) {
+    setUserData(() => {
+      const user = userData;
+      user.goal = e.target.value;
+      return user;
+    });
+    setHaveChanges(true);
+  }
+
+  function saveChanges() {
+    axios.post("http://localhost:8080/api/v1/user", userData);
+    setHaveChanges(false);
+  }
+
   if (isLoading) {
     return <Audio height="80" width="80" color="blue" ariaLabel="loading" />;
   }
@@ -55,38 +106,70 @@ export const ProfilePage = () => {
       <h2>Profile</h2>
       <div className="profile-input">
         <label htmlFor="first_name">First Name:</label>
-        <input type="text" id="first_name" defaultValue={userData.firstName} />
+        <input
+          type="text"
+          id="first_name"
+          defaultValue={userData.firstName}
+          readOnly
+        />
       </div>
       <div className="profile-input">
         <label htmlFor="first_name">Last Name:</label>
-        <input type="text" id="last_name" defaultValue={userData.lastName} />
+        <input
+          type="text"
+          id="last_name"
+          defaultValue={userData.lastName}
+          readOnly
+        />
       </div>
       <div className="profile-input">
         <label htmlFor="age">Age:</label>
-        <input type="number" id="age" defaultValue={userData.age} />
+        <input
+          type="number"
+          id="age"
+          defaultValue={userData.age}
+          onChange={changeAge}
+        />
       </div>
       <div className="profile-input">
         <label htmlFor="email">Email:</label>
-        <input type="email" id="email" defaultValue={userData.email} />
+        <input type="email" id="email" defaultValue={userData.email} readOnly />
       </div>
-      <div id="gender-container">
+      <div className="profile-input">
         <label>Gender:</label>
-        <label htmlFor="male">Male</label>
-        <input type="radio" name="gender" id="male" checked />
-        <label htmlFor="female">Female</label>
-        <input type="radio" name="gender" id="female" />
+        <input
+          type="text"
+          id="gender"
+          defaultValue={userData.gender}
+          readOnly
+        />
       </div>
       <div className="profile-input">
         <label htmlFor="height">Height:</label>
-        <input type="number" id="height" defaultValue={userData.height} />
+        <input
+          type="number"
+          id="height"
+          defaultValue={userData.height}
+          onChange={changeHeight}
+        />
       </div>
       <div className="profile-input">
         <label htmlFor="weight">Weight:</label>
-        <input type="number" id="weight" defaultValue={userData.weight} />
+        <input
+          type="number"
+          id="weight"
+          defaultValue={userData.weight}
+          onChange={changeWeight}
+        />
       </div>
       <div className="profile-input">
         <label htmlFor="activity">Activity:</label>
-        <select name="" id="activity" defaultValue={userData.activity}>
+        <select
+          name=""
+          id="activity"
+          defaultValue={userData.activity}
+          onChange={changeActivity}
+        >
           <option value="SEDENTARY">SEDENTARY</option>
           <option value="LIGHTLY">LIGHTLY</option>
           <option value="MODERATELY">MODERATELY</option>
@@ -96,14 +179,26 @@ export const ProfilePage = () => {
       </div>
       <div className="profile-input">
         <label htmlFor="goal">Goal:</label>
-        <select name="" id="goal" defaultValue={userData.goal}>
-          <option value="EXTREAM_CUT">EXTREAM_CUT</option>
+        <select
+          name=""
+          id="goal"
+          defaultValue={userData.goal}
+          onChange={changeGoal}
+        >
+          <option value="EXTREAM_CUT">EXTREAM CUT</option>
           <option value="CUT">CUT</option>
           <option value="MAINTAIN">MAINTAIN</option>
           <option value="BULK">BULK</option>
-          <option value="EXTREAM_BULK">EXTREAM_BULK</option>
+          <option value="EXTREAM_BULK">EXTREAM BULK</option>
         </select>
       </div>
+      {haveChanges ? (
+        <div className="button-div">
+          <button onClick={saveChanges}>Save Changes</button>
+        </div>
+      ) : (
+        <></>
+      )}
     </div>
   );
 };

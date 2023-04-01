@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Switch, withRouter } from "react-router-dom";
+import { BrowserRouter, Route, Switch, useHistory, withRouter } from "react-router-dom";
 import "./App.css";
 import PrivateRoute from "./auth/PrivateRoute";
 import { LoginPage } from "./layout/Login And Register/LoginPage/LoginPage";
@@ -14,6 +14,8 @@ import User from "./model/User";
 import { setAuthToken } from "./auth/setAuthToken";
 import { ProfilePage } from "./layout/ProfilePage/ProfilePage";
 import { MealContext } from "./context/MealContext";
+import axios from "axios";
+import { UserInfo } from "./layout/UserInfo/UserInfo";
 
 function App() {
   const [date, setDate] = useState(new Date());
@@ -35,13 +37,16 @@ function App() {
           parsedToken.lastName,
           parsedToken.sub
         );
+
+        
         return user;
       }
     }
 
     return new User();
   });
-
+  
+  
   return (
     <div className="App">
       <BrowserRouter>
@@ -55,6 +60,7 @@ function App() {
             <MealContext.Provider value={{ date, setDate, group, setGroup }}>
               <PrivateRoute path="/add-meal" component={AddMeal} />
               <PrivateRoute path="/meals" component={MealsPage} />
+              <PrivateRoute path="/user-info" component={UserInfo} />
             </MealContext.Provider>
             <PrivateRoute path="/profile" component={ProfilePage} />
           </UserContext.Provider>

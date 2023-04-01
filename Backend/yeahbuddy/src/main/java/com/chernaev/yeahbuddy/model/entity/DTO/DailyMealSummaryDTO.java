@@ -14,4 +14,6 @@ public class DailyMealSummaryDTO {
     private int totalCarbs;
     private int totalFats;
     private int totalProtein;
+    private int dailyGoal;
+
 }

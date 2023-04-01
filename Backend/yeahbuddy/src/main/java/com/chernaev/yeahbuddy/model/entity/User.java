@@ -1,6 +1,9 @@
 package com.chernaev.yeahbuddy.model.entity;
 
 
+import com.chernaev.yeahbuddy.model.entity.enums.ActivityEnum;
+import com.chernaev.yeahbuddy.model.entity.enums.GenderEnum;
+import com.chernaev.yeahbuddy.model.entity.enums.GoalEnum;
 import com.chernaev.yeahbuddy.model.entity.enums.RoleEnum;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
@@ -36,14 +39,34 @@ public class User extends BaseEntity implements UserDetails {
     @Column(nullable = false)
     private String password;
 
+    @Enumerated(value = EnumType.STRING)
+    @Column(nullable = true)
+    private RoleEnum role;
+
+    @Column(nullable = true)
+    private int age;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = true)
+    private GenderEnum gender;
+
+    @Column(nullable = true)
+    private int height;
+
+    @Column(nullable = true)
+    private int weight;
+
+    @Column(nullable = true)
+    @Enumerated(EnumType.STRING)
+    private ActivityEnum activity;
+
+    @Column(nullable = true)
+    @Enumerated(EnumType.STRING)
+    private GoalEnum goal;
 
     @OneToMany(targetEntity = Meal.class, mappedBy = "user")
     private List<Meal> meals = new ArrayList<>();
 
-    @OneToOne(mappedBy = "user")
-    private UserInfo userInfo;
-    @Enumerated(value = EnumType.STRING)
-    private RoleEnum role;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

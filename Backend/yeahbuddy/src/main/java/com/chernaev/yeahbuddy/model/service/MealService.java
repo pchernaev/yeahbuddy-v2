@@ -5,6 +5,9 @@ import com.chernaev.yeahbuddy.model.entity.Food;
 import com.chernaev.yeahbuddy.model.entity.Group;
 import com.chernaev.yeahbuddy.model.entity.Meal;
 import com.chernaev.yeahbuddy.model.entity.User;
+import com.chernaev.yeahbuddy.model.entity.enums.ActivityEnum;
+import com.chernaev.yeahbuddy.model.entity.enums.GenderEnum;
+import com.chernaev.yeahbuddy.model.entity.enums.GoalEnum;
 import com.chernaev.yeahbuddy.model.repository.FoodRepository;
 import com.chernaev.yeahbuddy.model.repository.GroupRepository;
 import com.chernaev.yeahbuddy.model.repository.MealRepository;
@@ -66,9 +69,52 @@ public class MealService {
         int totalDailyCarbs = meals.stream().mapToInt(MealForSummaryDTO::getCarbs).sum();
         int totalDailyFats = meals.stream().mapToInt(MealForSummaryDTO::getFats).sum();
         int totalDailyProtein = meals.stream().mapToInt(MealForSummaryDTO::getProtein).sum();
+        int dailyGoal = calculateGoalCalories(userRepository.findByEmail(email).orElseThrow());
 
-        return new DailyMealSummaryDTO(totalDailyCalories,totalDailyCarbs, totalDailyFats, totalDailyProtein);
+        return new DailyMealSummaryDTO(totalDailyCalories, totalDailyCarbs, totalDailyFats, totalDailyProtein, dailyGoal);
     }
+
+    private int calculateGoalCalories(User user){
+        double calorieGoal = 0;
+        double BMR = 0;
+        int age = user.getAge();
+        GenderEnum gender = user.getGender();
+        int height = user.getHeight();
+        int weight = user.getWeight();
+        ActivityEnum activity = user.getActivity();
+        GoalEnum goal = user.getGoal();
+
+        if(gender == GenderEnum.MALE){
+            BMR = 66.5 + (13.75 * weight) + (5.003 * height) - (6.75 * age);
+        } else {
+            BMR = 655.1 + (9.563 * weight) + (1.850 * height) - (4.676 * age);
+        }
+
+        if(activity == ActivityEnum.SEDENTARY){
+            calorieGoal = BMR * 1.2;
+        } else if (activity == ActivityEnum.LIGHTLY) {
+            calorieGoal = BMR * 1.375;
+        } else if (activity == ActivityEnum.MODERATELY) {
+            calorieGoal = BMR * 1.55;
+        } else if (activity == ActivityEnum.VERY) {
+            calorieGoal = BMR * 1.725;
+        } else if (activity == ActivityEnum.EXTRA) {
+            calorieGoal = BMR * 1.9;
+        }
+
+        if(goal == GoalEnum.EXTREAM_CUT){
+            calorieGoal -= 500;
+        } else if (goal == GoalEnum.CUT) {
+            calorieGoal -= 300;
+        } else if (goal == GoalEnum.BULK) {
+            calorieGoal += 300;
+        } else if(goal ==GoalEnum.EXTREAM_BULK){
+            calorieGoal += 500;
+        }
+
+        return (int)Math.round(calorieGoal);
+    }
+
 
     private List<MealForSummaryDTO> processMealsForSummary(String email, LocalDate date) {
         List<Meal> meals = mealRepository.findAllByUser_EmailAndDate(email, date);
@@ -93,7 +139,10 @@ public class MealService {
         return mealRepository.save(new Meal(meal.getSize(),meal.getDate(),food,group,user));
     }
 
-    public List<Food> getAllMeals() {
+    public List<Food> getAllMeals(String search) {
+        if(!search.isEmpty()) {
+            return foodRepository.findAllByNameStartingWith(search);
+        }
         return foodRepository.findAll();
     }
 

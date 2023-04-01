@@ -30,8 +30,6 @@ export const MealGroup: React.FC<{ group: string; id: number }> = (props) => {
 
       axios.get(url).then(function (response) {
         const responseData = response.data;
-        console.log(props.group);
-        console.log(responseData);
         const loadedMeals: MealsToDisplay[] = [];
 
         for (const key in responseData.meals) {

@@ -20,6 +20,7 @@ export const AddMeal = () => {
   const [carbs, setCarbs] = useState(0);
   const [fats, setFats] = useState(0);
   const [size, setSize] = useState(0);
+  const [search, setSearch] = useState("");
 
   const mealInfo = useContext(MealContext);
   const user = useContext(UserContext);
@@ -50,7 +51,11 @@ export const AddMeal = () => {
     setSize(e.target.value);
   }
 
-  function handleSubmit(e: any) {
+  function changeSearch(e: any) {
+    setSearch(e.target.value);
+  }
+
+  async function handleSubmit(e: any) {
     e.preventDefault();
 
     const newMeal = {
@@ -64,19 +69,17 @@ export const AddMeal = () => {
       group_id: mealInfo.group,
       user_email: user.email,
     };
-
-    axios.post("http://localhost:8080/api/v1/meal/new-meal", newMeal);
+    await axios.post("http://localhost:8080/api/v1/meal/new-meal", newMeal);
 
     history.push("/meals");
   }
 
   useEffect(() => {
     const fetchMeals = async () => {
-      axios.get("http://localhost:8080/api/v1/meal")
+      await axios.get(`http://localhost:8080/api/v1/meal/search=${search}`)
       .then(function (response) {
         const responseData = response.data;
         const loadedMeals: MealsToAdd[] = [];
-        console.log("Hi");
         for (const key in responseData) {
           loadedMeals.push({
             id: responseData[key].id,
@@ -95,7 +98,7 @@ export const AddMeal = () => {
       setIsLoading(false);
       setHttpError(error.message);
     });
-  }, []);
+  }, [search]);
 
   if (isLoading) {
     return <Audio height="80" width="80" color="blue" ariaLabel="loading" />;
@@ -113,7 +116,7 @@ export const AddMeal = () => {
     <div id="add-meal-container">
       <div id="search-container">
         <div>
-          <input type="text" placeholder="Search for food" />
+          <input type="text" placeholder="Search for food" onChange={changeSearch}/>
         </div>
         <div>
           <Popup trigger={<button className="button"> + </button>} modal nested>
