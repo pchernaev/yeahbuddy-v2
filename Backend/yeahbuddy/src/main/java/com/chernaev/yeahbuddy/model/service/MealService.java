@@ -25,7 +25,12 @@ public class MealService {
     private final UserRepository userRepository;
     private final GroupRepository groupRepository;
 
-    public MealService(MealRepository mealRepository, FoodRepository foodRepository, UserRepository userRepository, GroupRepository groupRepository) {
+    public MealService(
+            MealRepository mealRepository,
+            FoodRepository foodRepository,
+            UserRepository userRepository,
+            GroupRepository groupRepository
+    ) {
         this.mealRepository = mealRepository;
         this.foodRepository = foodRepository;
         this.userRepository = userRepository;
@@ -166,5 +171,10 @@ public class MealService {
                 group,
                 user
         ));
+    }
+
+    public void deleteMeal(long id) {
+        Meal meal = mealRepository.findById(id).orElseThrow();
+        mealRepository.delete(meal);
     }
 }

@@ -51,4 +51,11 @@ public class MealController {
     public ResponseEntity<Meal> addNewMeal (@RequestBody NewMealDTO meal) {
         return ResponseEntity.ok(mealService.addNewMeal(meal));
     }
+
+    @CrossOrigin
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Meal> delete (@PathVariable long id) {
+        mealService.deleteMeal(id);
+        return ResponseEntity.ok().build();
+    }
 }

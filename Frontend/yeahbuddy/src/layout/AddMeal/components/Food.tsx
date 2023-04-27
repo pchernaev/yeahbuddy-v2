@@ -8,14 +8,22 @@ import { UserContext } from "../../../context/UserContext";
 import MealsToAdd from "../../../model/MealsToAdd";
 
 export const Food: React.FC<{meal: MealsToAdd}> = (props) => {
+  const [calories, setCalories] = useState(props.meal.calories);
+  const [protein, setProtein] = useState(props.meal.protein);
+  const [carbs, setCarbs] = useState(props.meal.carbs);
+  const [fats, setFats] = useState(props.meal.fats);
   const mealInfo = useContext(MealContext);
   const user = useContext(UserContext);
-  const [size, setSize] = useState()
+  const [size, setSize] = useState(100)
   const history = useHistory();
 
-
   function changeSize(e: any) {
-    setSize(e.target.value);
+    const size = e.target.value;
+    setSize(size);
+    setCalories(Math.round(props.meal.calories / 100 * size));
+    setProtein(Math.round(props.meal.protein / 100 * size));
+    setCarbs(Math.round(props.meal.carbs / 100 * size));
+    setFats(Math.round(props.meal.fats / 100 * size));
   }
 
   async function handleSubmit(e: any) {
@@ -48,12 +56,13 @@ export const Food: React.FC<{meal: MealsToAdd}> = (props) => {
               <h2>{props.meal.name}</h2>
             </div>
             <div className="food-info-container">
-              <p>Protein: {props.meal.protein}g</p>
-              <p>Carbs: {props.meal.carbs}g</p>
-              <p>Fats: {props.meal.fats}g</p>
+              <p id="cal-p">Calories: {calories}</p>
+              <p>Protein: {protein}g</p>
+              <p>Carbs: {carbs}g</p>
+              <p>Fats: {fats}g</p>
             </div>
             <div className="input-container">
-              <input type="text" id="gram-input" onChange={changeSize}/>
+              <input type="text" id="gram-input" onChange={changeSize} defaultValue={100}/>
               <label htmlFor="gram-input">grams</label>
             </div>
             <div className="btn-container">

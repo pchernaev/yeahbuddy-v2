@@ -3,6 +3,7 @@
 
 #home-container {
   background-color: #fef6fe;
+  padding-bottom: 60px;
 }
 
 #home-container p{
@@ -71,4 +72,11 @@
 #home-container #articles {
   display: flex;
   flex-direction: column;
+}
+
+@media only screen and (min-width: 1500px) {
+  #articles {
+    padding-left: 550px; 
+    padding-right: 550px; 
+  }
 }

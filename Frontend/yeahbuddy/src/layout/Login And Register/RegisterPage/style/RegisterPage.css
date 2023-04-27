@@ -60,3 +60,11 @@
   color: black;
   background-color: white;
 }
+
+
+@media only screen and (min-width: 1450px) {
+  #register-container form{
+      padding-left: 500px;
+      padding-right: 500px;
+  }
+}

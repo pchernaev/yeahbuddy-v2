@@ -14,7 +14,7 @@ public class MealToDisplayDTO {
     private String name;
     private double size;
     private int calories;
-    private int cabs;
+    private int carbs;
     private int fats;
     private int protein;
 }

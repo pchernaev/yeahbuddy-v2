@@ -4,6 +4,7 @@ import axios from "axios";
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
 
+
 export const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -27,7 +28,6 @@ export const LoginPage = () => {
     axios
       .post("http://localhost:8080/api/v1/auth/authenticate", params)
       .then(function (response) {
-        console.log(response);
         localStorage.setItem("auth", response.data.token);
         history.push("/");
         window.location.reload();

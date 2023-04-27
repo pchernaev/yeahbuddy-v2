@@ -6,12 +6,17 @@ type MealInfo = {
   setDate: (c: Date) => void;
   group: number;
   setGroup: (c: number) => void;
+  change: boolean;
+  setChange: (c: boolean) => void;
 };
 
 export const MealContext = createContext<MealInfo>({
     date: new Date(),
     setDate: () => {},
     group: 1,
-    setGroup: () => {}
+    setGroup: () => {},
+    change: true,
+    setChange: () => {}
+
 });
 

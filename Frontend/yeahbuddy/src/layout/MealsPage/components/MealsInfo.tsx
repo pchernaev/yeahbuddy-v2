@@ -8,11 +8,9 @@ import MealsToDisplay from "../../../model/MealsToDisplay";
 import { UserContext } from "../../../context/UserContext";
 
 export const MealsInfo = () => {
-
   const mealInfo = useContext(MealContext);
   const user = useContext(UserContext);
 
-  // const [selectedDate, setSelectedDate] = useState(mealInfo.date);
   const [totalDailyCalories, setTotalDailyCalories] = useState(0);
   const [totalDailyCarbs, setTotalDailyCarbs] = useState(0);
   const [totalDailyFats, setTotalDailyFats] = useState(0);
@@ -24,10 +22,10 @@ export const MealsInfo = () => {
   useEffect(() => {
     const fetchMeals = async () => {
       const date = mealInfo.date.toISOString().split("T")[0];
-      
+
       const url: string = `http://localhost:8080/api/v1/meal/email=${user.email}/date=${date}`;
 
-      axios.get(url).then(function (response) {
+      await axios.get(url).then(function (response) {
         const responseData = response.data;
         setTotalDailyCalories(responseData.totalDailyCalories);
         setTotalDailyCarbs(responseData.totalCarbs);
@@ -42,7 +40,7 @@ export const MealsInfo = () => {
       setIsLoading(false);
       setHttpError(error.message);
     });
-  }, []);
+  }, [mealInfo.change, mealInfo.date]);
 
   if (isLoading) {
     return <Audio height="80" width="80" color="blue" ariaLabel="loading" />;
@@ -56,10 +54,25 @@ export const MealsInfo = () => {
     );
   }
 
+  function incrementDate() {
+    const date = mealInfo.date;
+    const newDate = new Date(date);
+    newDate.setDate(date.getDate() + 1);
+    mealInfo.setDate(newDate); 
+  }
+
+   function decrementDate() {
+     const date = mealInfo.date;
+     const newDate = new Date(date);
+     newDate.setDate(date.getDate() - 1);
+     mealInfo.setDate(newDate);
+   }
+
   return (
     <div id="meals-info">
       <section>
-        <div>
+        <div id="date-section">
+          <button onClick={decrementDate}>&lt;</button>
           <DatePicker
             selected={mealInfo.date}
             onChange={(date: any) => {
@@ -67,9 +80,12 @@ export const MealsInfo = () => {
             }}
             withPortal
           />
+          <button onClick={incrementDate}> &gt;</button>
         </div>
         <div>
-          <h3>{totalDailyCalories} / {dailyGoal} cal</h3>
+          <h3>
+            {totalDailyCalories} / {dailyGoal} cal
+          </h3>
           <div id="macros-container">
             <h5>Protein: {totalDailyProtein} g.</h5>
             <h5>Carbs: {totalDailyCarbs} g.</h5>

@@ -20,6 +20,7 @@ import { UserInfo } from "./layout/UserInfo/UserInfo";
 function App() {
   const [date, setDate] = useState(new Date());
   const [group, setGroup] = useState(1);
+  const [change, setChange] = useState(true);
 
   const [user, setUser] = useState<User>(() => {
     const token = localStorage.getItem("auth");
@@ -57,7 +58,7 @@ function App() {
             <Route path="/home" component={withRouter(HomePage)} />
             <Route path="/login" component={withRouter(LoginPage)} />
             <Route path="/register" component={withRouter(RegisterPage)} />
-            <MealContext.Provider value={{ date, setDate, group, setGroup }}>
+            <MealContext.Provider value={{ date, setDate, group, setGroup, change, setChange }}>
               <PrivateRoute path="/add-meal" component={AddMeal} />
               <PrivateRoute path="/meals" component={MealsPage} />
               <PrivateRoute path="/user-info" component={UserInfo} />

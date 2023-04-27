@@ -70,3 +70,9 @@
     margin-bottom: 20px;
 }
 
+@media only screen and (min-width: 1900px) {
+    #profile-container {
+        padding-left: 750px;
+        padding-right: 750px;
+    }
+}

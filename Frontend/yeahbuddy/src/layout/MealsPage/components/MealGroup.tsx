@@ -28,7 +28,7 @@ export const MealGroup: React.FC<{ group: string; id: number }> = (props) => {
       const date: string = mealsInfo.date.toISOString().split("T")[0];
       const url: string = `http://localhost:8080/api/v1/meal/group=${props.id}/email=${user.email}/date=${date}`;
 
-      axios.get(url).then(function (response) {
+      await axios.get(url).then(function (response) {
         const responseData = response.data;
         const loadedMeals: MealsToDisplay[] = [];
 
@@ -37,6 +37,9 @@ export const MealGroup: React.FC<{ group: string; id: number }> = (props) => {
             id: responseData.meals[key].id,
             name: responseData.meals[key].name,
             calories: responseData.meals[key].calories,
+            protein: responseData.meals[key].protein,
+            carbs: responseData.meals[key].carbs,
+            fats: responseData.meals[key].fats,
             group: responseData.meals[key].group,
             size: responseData.meals[key].size,
           });
@@ -51,7 +54,7 @@ export const MealGroup: React.FC<{ group: string; id: number }> = (props) => {
       setIsLoading(false);
       setHttpError(error.message);
     });
-  }, []);
+  }, [mealsInfo.change, mealsInfo.date]);
 
   if (isLoading) {
     return <Audio height="80" width="80" color="blue" ariaLabel="loading" />;

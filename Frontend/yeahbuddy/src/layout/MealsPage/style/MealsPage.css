@@ -1,10 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Symbols+2&display=swap");
 
 #meals-page-container {
- background-color: #f7e3f7;
- padding: 15px;
+  background-color: #f7e3f7;
+  height: 100%;
+  padding: 15px;
 }
-
 
 .react-datepicker__input-container {
   margin-top: 10px;
@@ -46,6 +46,33 @@
   align-items: center;
   justify-content: center;
   gap: 1rem;
+}
+
+#meals-info #date-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+#meals-info #date-section button {
+  border: none;
+  background-color: black;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 3px;
+  height: 25px;
+  width: 25px;
+  font-weight: bold;
+  font-size: medium;
+}
+
+#meals-info #date-section button:hover {
+  background-color: white;
+  cursor: pointer;
+  color: black;
+  border: 2px solid black;
 }
 
 .group-container {
@@ -100,4 +127,62 @@
 
 .group-container .meal-container div:last-child {
   text-align: left;
+}
+
+#meal-name:hover {
+  cursor: pointer;
+}
+
+#meal-summary-container h2 {
+  margin: 0;
+  padding: 10px 30px;
+}
+
+#meal-summary-container p {
+  font-weight: 600;
+  font-size: large;
+  padding: 10px 30px;
+  margin: 0;
+}
+
+#meal-summary-container .button-container {
+  text-align: right;
+  padding: 15px 30px;
+}
+
+#meal-summary-container .button-container button {
+  background-color: rgb(226, 81, 81);
+  color: white;
+  width: 40%;
+  height: 2rem;
+  border: 2px solid black;
+  border-radius: 4px;
+  font-size: medium;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+#meal-summary-container .button-container button:hover {
+  cursor: pointer;
+  background-color: rgb(239, 137, 137);
+  color: black;
+}
+
+@media only screen and (min-width: 1450px) {
+  #meals-page-container {
+    padding-left: 300px;
+    padding-right: 300px;
+  }
+
+  .group-container .meal-container button {
+    width: 10%;
+  }
+
+  #meal-summary-container .button-container button {
+    width: 25%;
+  }
+
+  #meals-info #date-section {
+    gap: 4rem;
+  }
 }
