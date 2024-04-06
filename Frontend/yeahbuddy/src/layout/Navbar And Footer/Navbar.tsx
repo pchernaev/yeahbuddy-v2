@@ -22,7 +22,10 @@ export const Navbar = () => {
           <Link to="/meals">Meals</Link>
         </li>
         <li>
-          <Link to="/workouts">Workouts</Link>
+          <Link to="/list">List</Link>
+        </li>
+        <li>
+          <Link to="/recipes">Recipes</Link>
         </li>
         {token ? (
           <li>

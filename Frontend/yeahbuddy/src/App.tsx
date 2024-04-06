@@ -16,6 +16,10 @@ import { ProfilePage } from "./layout/ProfilePage/ProfilePage";
 import { MealContext } from "./context/MealContext";
 import axios from "axios";
 import { UserInfo } from "./layout/UserInfo/UserInfo";
+import { ShoppingList } from "./layout/ShoppingList/ShoppingList";
+import { ListContext } from "./context/ListContext";
+import { RecipesPage } from "./layout/RecipesPage/RecipesPage";
+import { AddRecipe } from "./layout/AddRecipe/AddRecipe";
 
 function App() {
   const [date, setDate] = useState(new Date());
@@ -58,12 +62,19 @@ function App() {
             <Route path="/home" component={withRouter(HomePage)} />
             <Route path="/login" component={withRouter(LoginPage)} />
             <Route path="/register" component={withRouter(RegisterPage)} />
-            <MealContext.Provider value={{ date, setDate, group, setGroup, change, setChange }}>
+            <MealContext.Provider
+              value={{ date, setDate, group, setGroup, change, setChange }}
+            >
               <PrivateRoute path="/add-meal" component={AddMeal} />
               <PrivateRoute path="/meals" component={MealsPage} />
               <PrivateRoute path="/user-info" component={UserInfo} />
             </MealContext.Provider>
             <PrivateRoute path="/profile" component={ProfilePage} />
+            <PrivateRoute path="/recipes" component={RecipesPage} />
+            <PrivateRoute path="/add-recipe" component={AddRecipe} />
+            <ListContext.Provider value={{ change, setChange }}>
+              <PrivateRoute path="/list" component={ShoppingList} />
+            </ListContext.Provider>
           </UserContext.Provider>
         </Switch>
       </BrowserRouter>

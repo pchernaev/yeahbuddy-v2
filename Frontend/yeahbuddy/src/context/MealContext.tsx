@@ -1,5 +1,4 @@
 import { createContext } from "react";
-import { UserContext } from "./UserContext";
 
 type MealInfo = {
   date: Date;
@@ -17,6 +16,5 @@ export const MealContext = createContext<MealInfo>({
     setGroup: () => {},
     change: true,
     setChange: () => {}
-
 });
 
