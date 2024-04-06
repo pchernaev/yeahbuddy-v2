@@ -67,6 +67,10 @@ public class User extends BaseEntity implements UserDetails {
     @OneToMany(targetEntity = Meal.class, mappedBy = "user")
     private List<Meal> meals = new ArrayList<>();
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "shopping_list_id", referencedColumnName = "id")
+    private ShoppingList shoppingList;
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

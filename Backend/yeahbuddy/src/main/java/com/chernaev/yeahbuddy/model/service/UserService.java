@@ -2,6 +2,7 @@ package com.chernaev.yeahbuddy.model.service;
 
 import com.chernaev.yeahbuddy.model.entity.DTO.UserDetailsDTO;
 import com.chernaev.yeahbuddy.model.entity.DTO.UserInfoDTO;
+import com.chernaev.yeahbuddy.model.entity.ShoppingList;
 import com.chernaev.yeahbuddy.model.entity.User;
 import com.chernaev.yeahbuddy.model.repository.UserRepository;
 import org.springframework.stereotype.Service;
@@ -54,6 +55,7 @@ public class UserService {
         user.setActivity(userInfo.getActivity());
         user.setGoal(userInfo.getGoal());
         user.setGender(userInfo.getGender());
+        user.setShoppingList(new ShoppingList());
 
         return userRepository.save(user);
     }
