@@ -2,24 +2,34 @@
 @import url('https://fonts.googleapis.com/css2?family=PT+Sans&display=swap');
 
 #home-container {
-  background-color: #fef6fe;
-  padding-bottom: 60px;
+  background-color: white;
+  padding-bottom: 100px;
 }
 
 #home-container p{
  text-align: justify;
  text-justify: inter-word;
  padding: 0px 15px;
- font-family: 'PT Sans', sans-serif;
+ font-family: "Gowun Dodum", sans-serif;
+ font-size: large;
 }
 
-#container {
-  background-color: #f7e3f7;
-  box-shadow: 0px 10px 10px #f7e3f7;
+
+#home-container h2 {
+  margin-top: 100px;
+  font-family: "Graduate", serif; 
+  color: #124076;
 }
 
-#home-container h4 {
-  margin-top: 40px;
+#home-container h1 {
+  font-family: "Graduate", serif; 
+  color: #124076;
+  font-size: 40px;
+  margin-top: 60px;
+}
+
+#home-container h3 {
+  font-family: "Graduate", serif; 
 }
 
 #home-container section {
@@ -27,46 +37,16 @@
   height: 300px;
 }
 
-#home-container section h1 {
-  font-family: "Permanent Marker", cursive;
-  font-size: 55px;
-  margin: 0;
-}
-
-#home-container section h3 {
-  font-family: "Titan One", cursive;
-}
-
-#home-container section button {
-  margin-top: 20px;
-  width: 90px;
-  height: 30px;
-  background-color: rgb(34, 33, 33);
-  border: 2px solid black;
-  color: white;
-  border-radius: 5px;
-  font-weight: bold;
-}
-
-#home-container section button:hover {
-  background-color: white;
-  color: black;
-}
-
-
-#home-container article {
-  margin: 30px 10px 0px 10px;
-}
-
 #home-container div i {
   font-size: 40px;
   padding: 20px;
   border: 2px solid black;
   border-radius: 50%;
+  color: #124076;
 }
 
 #home-container article div i {
-  background-color: rgb(199, 247, 247);
+  background-color: rgb(230, 241, 253);
 }
 
 #home-container #articles {
@@ -79,4 +59,11 @@
     padding-left: 550px; 
     padding-right: 550px; 
   }
+
+  #home-container h1 {
+  font-family: "Graduate", serif; 
+  color: #124076;
+  font-size: 70px;
+  margin-top: 60px;
+}
 }

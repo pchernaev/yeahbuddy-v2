@@ -1,0 +1,110 @@
+#add-container h1 {
+  font-family: "Graduate", serif;
+  margin-bottom: 40px;
+  color: #124076;
+}
+
+#add-container button {
+  width: 100px;
+  height: 40px;
+  border: 2px #124076 solid;
+  border-radius: 5px;
+  color: #124076;
+  font-weight: 600;
+  font-size: large;
+  background-color: #e4f0fc;
+  margin-bottom: 30px;
+}
+
+#add-container button:hover {
+  border: 2px #124076 solid;
+  border-radius: 5px;
+  color: white;
+  background-color: #124076;
+}
+
+#recipe-container form {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 10px;
+}
+
+#recipe-container p {
+  font-family: "Gowun Dodum", sans-serif;
+  font-size: x-large;
+  font-weight: 600;
+  color: #124076;
+}
+
+#recipe-container button {
+  margin-top: 25px;
+  width: 40px;
+  height: 40px;
+  border: 2px #124076 solid;
+  border-radius: 5px;
+  color: #124076;
+  font-weight: 600;
+  font-size: large;
+  background-color: #e4f0fc;
+}
+
+#recipe-container button:hover {
+  border: 2px #124076 solid;
+  border-radius: 5px;
+  color: white;
+  background-color: #124076;
+}
+
+#add-container {
+  margin-top: 100px;
+}
+
+#products {
+  padding-bottom: 80px;
+}
+
+.add-food-form div {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.add-food-form input {
+  border: 1px solid #124076;
+  border-radius: 10px;
+  height: 20px;
+  text-indent: 10px;
+}
+
+#add-food-list-div {
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+  justify-content: center; /* Horizontally center */
+  align-items: center;
+}
+
+#list-btn-container {
+  text-align: center;
+  display: block;
+}
+
+#list-btn-container button {
+  width: 150px;
+  height: 35px;
+  border: 2px solid #124076;
+  background-color: #124076;
+  color: white;
+  border-radius: 5px;
+  font-size: large;
+  font-weight: 600;
+  font-family: "Gowun Dodum", sans-serif;
+}
+
+#list-btn-container button:hover {
+  border: 2px solid black;
+  background-color: white;
+  color: black;
+}

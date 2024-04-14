@@ -5,6 +5,9 @@ import { Audio } from "react-loader-spinner";
 import axios from "axios";
 import RecipesToDisplay from "../../model/RecipesToDisplay";
 import Popup from "reactjs-popup";
+import { Navbar } from "../Navbar And Footer/Navbar";
+import { Footer } from "../Navbar And Footer/Footer";
+import "./style/RecipesPage.css"
 
 export const RecipesPage = () => {
     const [recipes, setRecipes] = useState<RecipesToDisplay[]>([]);
@@ -82,27 +85,47 @@ export const RecipesPage = () => {
     }
 
     return (
-      <div>
-        <button onClick={handleRedirect}>Add Recipe</button>
-        {recipes.map((recipe) => (
-          <div key={recipe.id}>
-            <h2>{recipe.name}</h2>
-            <Popup
-              trigger={<button className="button"> See More </button>}
-              modal
-              nested
-            >
-              <form className="add-food-form">
-                <div>
-                  <h2>{recipe.name}</h2>
-                  <p>{recipe.ingredients}</p>
-                  <p>{recipe.description}</p>
-                </div>
-                <button id={recipe.id.toString()} onClick={handleAddToList}>Add products to list</button>
-              </form>
-            </Popup>
-          </div>
-        ))}
+      <div id="recipes-container">
+        <Navbar />
+
+        <h1>Recipes</h1>
+        <div id="add-recipe-btn">
+          <button onClick={handleRedirect}>Add Recipe</button>
+        </div>
+        <div className="info">
+          {recipes.map((recipe) => (
+            <div id="recipes-cont" key={recipe.id}>
+              <h2>{recipe.name}</h2>
+              <Popup
+                trigger={<button className="button"> See More </button>}
+                modal
+                nested
+              >
+                <form className="add-recipe-form">
+                  <div id="recipe-info-container">
+                    <div id="name">
+                      <h2>{recipe.name}</h2>
+                    </div>
+                    <h4>Ingredients</h4>
+                    <p>{recipe.ingredients}</p>
+                    <h4>Description</h4>
+                    <p>{recipe.description}</p>
+                    <div id="btn-container">
+                      <button
+                        id={recipe.id.toString()}
+                        onClick={handleAddToList}
+                      >
+                        Add products to list
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </Popup>
+            </div>
+          ))}
+        </div>
+
+        <Footer />
       </div>
     );
 }

@@ -4,6 +4,8 @@ import MealsToDisplay from "../../model/MealsToDisplay";
 import "./style/ProfilePage.css";
 import { Audio } from "react-loader-spinner";
 import { UserContext } from "../../context/UserContext";
+import { Footer } from "../Navbar And Footer/Footer";
+import { Navbar } from "../Navbar And Footer/Navbar";
 
 export const ProfilePage = () => {
   const [userData, setUserData] = useState({
@@ -102,103 +104,112 @@ export const ProfilePage = () => {
   }
 
   return (
-    <div id="profile-container">
-      <h2>Profile</h2>
-      <div className="profile-input">
-        <label htmlFor="first_name">First Name:</label>
-        <input
-          type="text"
-          id="first_name"
-          defaultValue={userData.firstName}
-          readOnly
-        />
-      </div>
-      <div className="profile-input">
-        <label htmlFor="first_name">Last Name:</label>
-        <input
-          type="text"
-          id="last_name"
-          defaultValue={userData.lastName}
-          readOnly
-        />
-      </div>
-      <div className="profile-input">
-        <label htmlFor="age">Age:</label>
-        <input
-          type="number"
-          id="age"
-          defaultValue={userData.age}
-          onChange={changeAge}
-        />
-      </div>
-      <div className="profile-input">
-        <label htmlFor="email">Email:</label>
-        <input type="email" id="email" defaultValue={userData.email} readOnly />
-      </div>
-      <div className="profile-input">
-        <label>Gender:</label>
-        <input
-          type="text"
-          id="gender"
-          defaultValue={userData.gender}
-          readOnly
-        />
-      </div>
-      <div className="profile-input">
-        <label htmlFor="height">Height:</label>
-        <input
-          type="number"
-          id="height"
-          defaultValue={userData.height}
-          onChange={changeHeight}
-        />
-      </div>
-      <div className="profile-input">
-        <label htmlFor="weight">Weight:</label>
-        <input
-          type="number"
-          id="weight"
-          defaultValue={userData.weight}
-          onChange={changeWeight}
-        />
-      </div>
-      <div className="profile-input">
-        <label htmlFor="activity">Activity:</label>
-        <select
-          name=""
-          id="activity"
-          defaultValue={userData.activity}
-          onChange={changeActivity}
-        >
-          <option value="SEDENTARY">SEDENTARY</option>
-          <option value="LIGHTLY">LIGHTLY</option>
-          <option value="MODERATELY">MODERATELY</option>
-          <option value="VERY">VERY</option>
-          <option value="EXTRA">EXTRA</option>
-        </select>
-      </div>
-      <div className="profile-input">
-        <label htmlFor="goal">Goal:</label>
-        <select
-          name=""
-          id="goal"
-          defaultValue={userData.goal}
-          onChange={changeGoal}
-        >
-          <option value="EXTREAM_CUT">EXTREAM CUT</option>
-          <option value="CUT">CUT</option>
-          <option value="MAINTAIN">MAINTAIN</option>
-          <option value="BULK">BULK</option>
-          <option value="EXTREAM_BULK">EXTREAM BULK</option>
-        </select>
-      </div>
-      {haveChanges ? (
-        <div className="button-div">
-          <button onClick={saveChanges}>Save Changes</button>
+    <div>
+      <Navbar/>
+      <div id="profile-container">
+        <h1>PROFILE</h1>
+        <div className="profile-input">
+          <label htmlFor="first_name">First Name:</label>
+          <input
+            type="text"
+            id="first_name"
+            defaultValue={userData.firstName}
+            readOnly
+          />
         </div>
-      ) : (
-        <></>
-      )}
+        <div className="profile-input">
+          <label htmlFor="first_name">Last Name:</label>
+          <input
+            type="text"
+            id="last_name"
+            defaultValue={userData.lastName}
+            readOnly
+          />
+        </div>
+        <div className="profile-input">
+          <label htmlFor="age">Age:</label>
+          <input
+            type="number"
+            id="age"
+            defaultValue={userData.age}
+            onChange={changeAge}
+          />
+        </div>
+        <div className="profile-input">
+          <label htmlFor="email">Email:</label>
+          <input
+            type="email"
+            id="email"
+            defaultValue={userData.email}
+            readOnly
+          />
+        </div>
+        <div className="profile-input">
+          <label>Gender:</label>
+          <input
+            type="text"
+            id="gender"
+            defaultValue={userData.gender}
+            readOnly
+          />
+        </div>
+        <div className="profile-input">
+          <label htmlFor="height">Height:</label>
+          <input
+            type="number"
+            id="height"
+            defaultValue={userData.height}
+            onChange={changeHeight}
+          />
+        </div>
+        <div className="profile-input">
+          <label htmlFor="weight">Weight:</label>
+          <input
+            type="number"
+            id="weight"
+            defaultValue={userData.weight}
+            onChange={changeWeight}
+          />
+        </div>
+        <div className="profile-input">
+          <label htmlFor="activity">Activity:</label>
+          <select
+            name=""
+            id="activity"
+            defaultValue={userData.activity}
+            onChange={changeActivity}
+          >
+            <option value="SEDENTARY">SEDENTARY</option>
+            <option value="LIGHTLY">LIGHTLY</option>
+            <option value="MODERATELY">MODERATELY</option>
+            <option value="VERY">VERY</option>
+            <option value="EXTRA">EXTRA</option>
+          </select>
+        </div>
+        <div className="profile-input">
+          <label htmlFor="goal">Goal:</label>
+          <select
+            name=""
+            id="goal"
+            defaultValue={userData.goal}
+            onChange={changeGoal}
+          >
+            <option value="EXTREAM_CUT">EXTREAM CUT</option>
+            <option value="CUT">CUT</option>
+            <option value="MAINTAIN">MAINTAIN</option>
+            <option value="BULK">BULK</option>
+            <option value="EXTREAM_BULK">EXTREAM BULK</option>
+          </select>
+        </div>
+        {haveChanges ? (
+          <div className="button-div">
+            <button onClick={saveChanges}>Save Changes</button>
+          </div>
+        ) : (
+          <></>
+        )}
+      </div>
+      <Footer/>
     </div>
   );
 };

@@ -15,13 +15,11 @@ export const Product: React.FC<{ product: ProductsToDisplay }> = (props) => {
   }
 
     return (
-      <div>
+      <div id="recipe-container">
         <form onSubmit={handleDelete}>
-          <p>{props.product.name}</p>
-          <p>{props.product.quantity}</p>
-          <div className="button-container">
-            <button type="submit">Delete</button>
-          </div>
+          <p id="name">{props.product.name}</p>
+          <p id="quantity">{props.product.quantity == 0 ? "" : props.product.quantity}</p>
+          <button type="submit">X</button>
         </form>
       </div>
     );

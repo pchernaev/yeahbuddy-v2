@@ -2,34 +2,44 @@
 
 #userinfo-container h2 {
   margin-bottom: 60px;
-  font-family: 'Kanit', sans-serif;
+  font-family: "Graduate", serif;
   font-size: 30px;
+  color: #124076;
 }
 
 #userinfo-container label {
   font-weight: 500;
+  font-family: "Gowun Dodum", sans-serif;
+  font-size: large;
+  font-weight: 600;
 }
 
 #userinfo-container .profile-input input {
+  width: 20rem;
   height: 25px;
-  border-radius: 5px;
-  border: 2px solid black;
-  background-color: white;
-  text-align: center;
-  font-weight: bold;
+  border: 1px solid #124076;
+  border-radius: 20px;
+  text-indent: 30px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #userinfo-container .profile-input select {
   height: 30px;
+  width: 20rem;
   border-radius: 5px;
-  border: 2px solid black;
+  border: 1px solid #124076;
   background-color: white;
   text-align: center;
   font-weight: bold;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: "Gowun Dodum", sans-serif;
+  font-weight: 600;
 }
 
 #userinfo-container {
-  background-color: #f7e3f7;
+  background-color: white;
   padding: 20px 20px 20px 20px;
 }
 
@@ -51,20 +61,21 @@
 }
 
 #userinfo-container button {
-  width: 10rem;
-  height: 30px;
-  font-size: 18px;
-  font-weight: 500;
-  color: white;
-  background-color: black;
-  border: 2px solid black;
+ color: white;
+  padding: 5px 60px;
+  border: 2px solid #124076;
+  background-color: #124076;
+  font-family: "Gowun Dodum", sans-serif;
+  font-size: large;
+  font-weight: 600;
   border-radius: 5px;
-  font-family: "Josefin Sans", sans-serif;
+  margin-bottom: 100px;
 }
 
 #userinfo-container button:hover {
   color: black;
   background-color: white;
+  border-color: black;
 }
 
 #userinfo-container .button-div {

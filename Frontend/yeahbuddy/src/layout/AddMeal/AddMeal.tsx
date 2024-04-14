@@ -9,6 +9,8 @@ import { Audio } from "react-loader-spinner";
 import { MealContext } from "../../context/MealContext";
 import { UserContext } from "../../context/UserContext";
 import { useHistory } from "react-router-dom";
+import { Footer } from "../Navbar And Footer/Footer";
+import { Navbar } from "../Navbar And Footer/Navbar";
 
 export const AddMeal = () => {
   const [meals, setMeals] = useState<MealsToAdd[]>([]);
@@ -113,63 +115,81 @@ export const AddMeal = () => {
   }
 
   return (
-    <div id="add-meal-container">
-      <div id="search-container">
-        <div>
-          <input type="text" placeholder="Search for food" onChange={changeSearch}/>
+    <div>
+      <Navbar />
+      <div id="add-meal-container">
+        <h1>Choose Food</h1>
+        <div id="search-container">
+          <div>
+            <i className="fa-solid fa-magnifying-glass"></i>
+            <input
+              type="text"
+              placeholder="Search for food"
+              onChange={changeSearch}
+            />
+          </div>
+          <div>
+            <Popup
+              trigger={<button className="button"> + </button>}
+              modal
+              nested
+            >
+              <form className="add-food-form" onSubmit={handleSubmit}>
+                <div className="name-container">
+                  <h2 id="add-food-text">Add Food</h2>
+                </div>
+                <div id="nutrient-container">
+                  <div id="one">
+                    <label htmlFor="name-input">Name</label>
+                    <label htmlFor="calorie-input">Calories</label>
+                    <label htmlFor="protein-input">Protein</label>
+                    <label htmlFor="carb-input">Carbs</label>
+                    <label htmlFor="fat-input">Fats</label>
+                    <label htmlFor="size-input">Size</label>
+                  </div>
+                  <div id="two">
+                    <input type="text" id="name-input" onChange={changeName} />
+                    <input
+                      type="text"
+                      id="calorie-input"
+                      onChange={changeCalories}
+                    />
+                    <input
+                      type="text"
+                      id="protein-input"
+                      onChange={changeProtein}
+                    />
+                    <input type="text" id="carb-input" onChange={changeCarbs} />
+                    <input type="text" id="fat-input" onChange={changeFats} />
+                    <input type="text" id="size-input" onChange={changeSize} />
+                  </div>
+                  <div id="three">
+                    <br />
+                    <label htmlFor="calorie-input">/100g</label>
+                    <label htmlFor="calorie-input">/100g</label>
+                    <label htmlFor="calorie-input">/100g</label>
+                    <label htmlFor="calorie-input">/100g</label>
+                  </div>
+                </div>
+
+                {/* <div className="input-container"></div>
+                <div className="input-container"></div>
+                <div className="input-container"></div>
+                <div className="input-container"></div>
+                <div className="input-container"></div>
+                <div className="input-container"></div> */}
+                <div className="btn-container">
+                  <button type="submit">Add</button>
+                </div>
+              </form>
+            </Popup>
+          </div>
         </div>
-        <div>
-          <Popup trigger={<button className="button"> + </button>} modal nested>
-            <form className="add-food-form" onSubmit={handleSubmit}>
-              <div className="name-container">
-                <h2>Add Food</h2>
-              </div>
-              <div className="input-container">
-                <label htmlFor="name-input">Name</label>
-                <input type="text" id="name-input" onChange={changeName} />
-              </div>
-              <div className="input-container">
-                <label htmlFor="calorie-input">Calories</label>
-                <input
-                  type="text"
-                  id="calorie-input"
-                  onChange={changeCalories}
-                />
-                <label htmlFor="calorie-input">/100g</label>
-              </div>
-              <div className="input-container">
-                <label htmlFor="protein-input">Protein</label>
-                <input
-                  type="text"
-                  id="protein-input"
-                  onChange={changeProtein}
-                />
-                <label htmlFor="calorie-input">/100g</label>
-              </div>
-              <div className="input-container">
-                <label htmlFor="carb-input">Carbs</label>
-                <input type="text" id="carb-input" onChange={changeCarbs} />
-                <label htmlFor="calorie-input">/100g</label>
-              </div>
-              <div className="input-container">
-                <label htmlFor="fat-input">Fats</label>
-                <input type="text" id="fat-input" onChange={changeFats} />
-                <label htmlFor="calorie-input">/100g</label>
-              </div>
-              <div className="input-container">
-                <label htmlFor="size-input">Size</label>
-                <input type="text" id="size-input" onChange={changeSize} />
-              </div>
-              <div className="btn-container">
-                <button type="submit">Add</button>
-              </div>
-            </form>
-          </Popup>
-        </div>
+        {meals.map((meal) => (
+          <Food meal={meal} key={meal.id} />
+        ))}
       </div>
-      {meals.map((meal) => (
-        <Food meal={meal} key={meal.id} />
-      ))}
+      <Footer />
     </div>
   );
 };

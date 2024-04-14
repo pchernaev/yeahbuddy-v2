@@ -4,7 +4,7 @@ import PrivateRoute from "./auth/PrivateRoute";
 import { LoginPage } from "./layout/Login And Register/LoginPage/LoginPage";
 import { RegisterPage } from "./layout/Login And Register/RegisterPage/RegisterPage";
 import { AddMeal } from "./layout/AddMeal/AddMeal";
-import { Navbar } from "./layout/Navbar And Footer/Navbar";
+import { Footer } from "./layout/Navbar And Footer/Footer";
 import { MealsPage } from "./layout/MealsPage/MealsPage";
 import { HomePage } from "./layout/HomePage/HomePage";
 import jwt_decode from "jwt-decode";
@@ -20,6 +20,8 @@ import { ShoppingList } from "./layout/ShoppingList/ShoppingList";
 import { ListContext } from "./context/ListContext";
 import { RecipesPage } from "./layout/RecipesPage/RecipesPage";
 import { AddRecipe } from "./layout/AddRecipe/AddRecipe";
+import { Chat } from "./layout/Chat/Chat";
+import { Navbar } from "./layout/Navbar And Footer/Navbar";
 
 function App() {
   const [date, setDate] = useState(new Date());
@@ -55,7 +57,6 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Navbar />
         <Switch>
           <UserContext.Provider value={user}>
             <Route exact path="/" component={withRouter(HomePage)} />
@@ -72,6 +73,7 @@ function App() {
             <PrivateRoute path="/profile" component={ProfilePage} />
             <PrivateRoute path="/recipes" component={RecipesPage} />
             <PrivateRoute path="/add-recipe" component={AddRecipe} />
+            <PrivateRoute path="/chat" component={Chat} />
             <ListContext.Provider value={{ change, setChange }}>
               <PrivateRoute path="/list" component={ShoppingList} />
             </ListContext.Provider>

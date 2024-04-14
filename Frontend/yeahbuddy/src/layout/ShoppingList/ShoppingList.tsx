@@ -1,3 +1,4 @@
+import "./style/ShoppingList.css";
 import { useContext, useEffect, useState } from "react";
 import { Product } from "./components/Product";
 import ProductsToDisplay from "../../model/ProductsToDisplay";
@@ -7,6 +8,8 @@ import { UserContext } from "../../context/UserContext";
 import { ListContext } from "../../context/ListContext";
 import { useHistory } from "react-router-dom";
 import Popup from "reactjs-popup";
+import { Navbar } from "../Navbar And Footer/Navbar";
+import { Footer } from "../Navbar And Footer/Footer";
 
 export const ShoppingList = () => {
   const [products, setProducts] = useState<ProductsToDisplay[]>([]);
@@ -87,20 +90,37 @@ export const ShoppingList = () => {
 
   return (
     <div>
-      <Popup trigger={<button className="button"> + </button>} modal nested>
-        <form className="add-food-form">
-          <input type="text" id="name-input" onChange={changeName} />
-          <label htmlFor="name-input">Name</label>
-          <input type="number" id="quantity-input" onChange={changeQuantity} />
-          <label htmlFor="name-input">Quantity</label>
-          <div className="btn-container">
-            <button onClick={handleSubmit}>Add</button>
-          </div>
-        </form>
-      </Popup>
-      {products.map((product) => (
-        <Product product={product} key={product.id} />
-      ))}
+      <Navbar />
+      <div id="add-container">
+        <h1>Shopping List</h1>
+        <Popup trigger={<button className="button"> Add </button>} modal nested>
+          <form className="add-food-form">
+            <div id="add-food-list-div">
+              <div>
+                <label htmlFor="name-input-list">Name</label>
+                <label htmlFor="quantity-input-list">Quantity</label>
+              </div>
+              <div>
+                <input type="text" id="name-input-list" onChange={changeName} />
+                <input
+                  type="number"
+                  id="quantity-input-list"
+                  onChange={changeQuantity}
+                />
+              </div>
+            </div>
+            <div id="list-btn-container">
+              <button onClick={handleSubmit}>Add</button>
+            </div>
+          </form>
+        </Popup>
+      </div>
+      <div id="products">
+        {products.map((product) => (
+          <Product product={product} key={product.id} />
+        ))}
+      </div>
+      <Footer />
     </div>
   );
 };

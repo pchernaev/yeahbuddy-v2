@@ -1,7 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Symbols+2&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Graduate&display=swap');
 
 #meals-page-container {
-  background-color: #f7e3f7;
+  margin-top: 100px;
   height: 100%;
   padding: 15px;
 }
@@ -15,7 +16,8 @@
   border: transparent;
   text-align: center;
   font-size: large;
-  font-family: "Noto Sans Symbols 2", sans-serif;
+  font-family: "Gowun Dodum", sans-serif;
+  color: #124076;
 }
 
 .react-datepicker__input-container input:hover {
@@ -28,16 +30,20 @@
 
 #meals-info h3 {
   margin: 10px;
+  color: #124076;
+  font-family: "Gowun Dodum", sans-serif;
 }
 
 #meals-info h5 {
   margin: 0;
   margin-bottom: 10px;
+  color: #124076;
+  font-family: "Gowun Dodum", sans-serif;
 }
 
 #meals-info section {
   background-color: white;
-  border: 3px solid black;
+  border: 3px solid #124076;
   border-radius: 0px 10px 0px 10px;
 }
 
@@ -52,12 +58,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 5px;
+  gap: 40px;
 }
 
 #meals-info #date-section button {
   border: none;
-  background-color: black;
+  background-color: #124076;
   color: white;
   text-align: center;
   font-weight: bold;
@@ -71,18 +77,20 @@
 #meals-info #date-section button:hover {
   background-color: white;
   cursor: pointer;
-  color: black;
-  border: 2px solid black;
+  color: #124076;
+  border: 2px solid #124076;
 }
 
 .group-container {
   background-color: white;
   margin-bottom: 15px;
-  border: 3px solid black;
+  border: 3px solid #124076;
   border-radius: 10px;
 }
 
 .group-container h3 {
+  font-family: "Graduate", serif;  
+  color: #124076;
   margin: 10px;
 }
 
@@ -92,7 +100,7 @@
 }
 
 .group-container .meal-container {
-  border-top: 3px solid black;
+  border-top: 3px solid #124076;
 }
 
 .group-container .meal {
@@ -104,11 +112,13 @@
   margin: 0;
   padding: 7px 13px;
   font-weight: 500;
+  font-family: "Gowun Dodum", sans-serif;
+  font-weight: 600;
 }
 
 .group-container .meal-container button {
   border: none;
-  background-color: black;
+  background-color: #124076;
   color: white;
   text-align: center;
   font-weight: bold;
@@ -121,8 +131,8 @@
 .group-container .meal-container button:hover {
   background-color: white;
   cursor: pointer;
-  color: black;
-  border: 2px solid black;
+  color: #124076;
+  border: 2px solid #124076;
 }
 
 .group-container .meal-container div:last-child {
@@ -136,6 +146,7 @@
 #meal-summary-container h2 {
   margin: 0;
   padding: 10px 30px;
+  color: #124076;
 }
 
 #meal-summary-container p {
@@ -143,6 +154,7 @@
   font-size: large;
   padding: 10px 30px;
   margin: 0;
+  color: #124076;
 }
 
 #meal-summary-container .button-container {
